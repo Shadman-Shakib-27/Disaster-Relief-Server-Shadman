@@ -8,18 +8,16 @@ const jwt = require("jsonwebtoken");
 const app = express();
 const port = process.env.PORT || 5000;
 
-// wLdcQTZZZRNeZ9yV
+// wLdcQTZZZRNeZ9yV //
 
 // Middleware
 app.use(
   cors({
-    // origin: "https://food-distribution2.netlify.app",
-    // credentials: true,
   })
 );
 app.use(express.json());
 
-// MongoDB Connection URL
+// MongoDB Connection URI
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {});
 
@@ -32,9 +30,8 @@ async function run() {
     const db = client.db("assignment6");
     const collection = db.collection("users");
     const postsCollection = db.collection("posts");
-    const galleryCollection = db.collection("gallery");
 
-    // Supply Post Related Api
+    //-------------------- Supply Post Related Api----------------//
 
     // For Get All Post
     app.get("/api/v1/posts", async (req, res) => {
@@ -78,7 +75,7 @@ async function run() {
       if (existingUser) {
         return res.status(400).json({
           success: false,
-          message: "User already exists",
+          message: "User Already Exists",
         });
       }
 
